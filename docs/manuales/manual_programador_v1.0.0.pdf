@@ -1,0 +1,328 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 19 0 R 21 0 R] /Count 9 >>
+endobj
+
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 26 0 R /F2 27 0 R >> >> >>
+endobj
+
+4 0 obj
+<< /Length 480 >>
+stream
+BT
+/F2 18 Tf
+50 740 Td
+(Manual del Programador v1.0.0) Tj
+/F1 12 Tf
+0 -30 Td
+(Piedra, Papel o Tijera con Persistencia de Datos) Tj
+0 -25 Td
+(Institucion: E.E.S.T. N° 1 "Eduardo Ader" - Vicente Lopez) Tj
+0 -25 Td
+(Materia: Laboratorio de Programacion - 5° Ano) Tj
+0 -25 Td
+(Ano: 2026) Tj
+ET
+endstream
+endobj
+
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 6 0 R /Resources << /Font << /F1 26 0 R /F2 27 0 R >> >> >>
+endobj
+
+6 0 obj
+<< /Length 550 >>
+stream
+BT
+/F2 16 Tf
+50 740 Td
+(Introduccion) Tj
+/F1 11 Tf
+0 -25 Td
+(El presente manual del programador tiene como proposito) Tj
+0 -15 Td
+(documentar la arquitectura, el diseno y la implementacion) Tj
+0 -15 Td
+(del programa "Piedra, Papel o Tijera", una aplicacion de) Tj
+0 -15 Td
+(consola desarrollada en C++ como parte de la Actividad 7) Tj
+0 -15 Td
+(de la materia Laboratorio de Programacion \(5° ano\) de la) Tj
+0 -15 Td
+(E.E.S.T. N° 1 "Eduardo Ader".) Tj
+0 -25 Td
+(El programa implementa un sistema de persistencia de datos) Tj
+0 -15 Td
+(mediante flujo de archivos \(fstream\), permitiendo que cada) Tj
+0 -15 Td
+(partida jugada se almacene de forma permanente en un) Tj
+0 -15 Td
+(archivo de texto \(historial_partidas.txt\).) Tj
+0 -25 Td
+(Este manual esta dirigido a estudiantes de programacion que) Tj
+0 -15 Td
+(necesiten comprender, modificar o extender el codigo fuente) Tj
+0 -15 Td
+(del programa, asi como adaptar el modulo de almacenamiento) Tj
+0 -15 Td
+(a sus propios proyectos integradores anuales \(P.I.A.\).) Tj
+ET
+endstream
+endobj
+
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 8 0 R /Resources << /Font << /F1 26 0 R /F2 27 0 R >> >> >>
+endobj
+
+8 0 obj
+<< /Length 600 >>
+stream
+BT
+/F2 16 Tf
+50 740 Td
+(Desarrollo) Tj
+/F1 11 Tf
+0 -25 Td
+(1. Arquitectura del Sistema) Tj
+0 -15 Td
+(El programa sigue una arquitectura modular basada en) Tj
+0 -15 Td
+(funciones, con una estructura de datos \(struct\) que agrupa) Tj
+0 -15 Td
+(los atributos de cada partida. Componentes principales:) Tj
+0 -15 Td
+(  struct Partida - Datos de cada partida) Tj
+0 -15 Td
+(  jugarPartida\(\) - Procesa la jugada contra la IA) Tj
+0 -15 Td
+(  guardarEnDisco\(\) - Persiste la partida en archivo) Tj
+0 -15 Td
+(  leerHistorialDisco\(\) - Recupera y muestra el historial) Tj
+0 -20 Td
+(2. Estructura de Datos) Tj
+0 -15 Td
+(  struct Partida { int idPartida; string jugador;) Tj
+0 -15 Td
+(  string eleccionJugador; string eleccionIA; string resultado; }) Tj
+0 -20 Td
+(  Ventajas: encapsulamiento, mantenibilidad, legibilidad) Tj
+0 -20 Td
+(3. Manejo de Archivos \(Persistencia\)) Tj
+0 -15 Td
+(  3.1 Escritura: ofstream con ios::app \(agrega al final\)) Tj
+0 -15 Td
+(  3.2 Lectura: ifstream con getline delimitado por comas) Tj
+0 -20 Td
+(4. Manejo del Buffer de Entrada) Tj
+0 -15 Td
+(  cin.ignore\(\) antes de getline\(\) para limpiar el \\n) Tj
+0 -20 Td
+(5. Logica del Juego) Tj
+0 -15 Td
+(  Generacion aleatoria: rand\(\) % 3 + 1) Tj
+0 -15 Td
+(  Reglas: Piedra>Tijera, Papel>Piedra, Tijera>Papel) Tj
+0 -20 Td
+(6. Compilacion y Ejecucion) Tj
+0 -15 Td
+(  g++ -std=c++11 src/main.cpp -o src/piedrapapelotijera.exe) Tj
+0 -20 Td
+(7. Flujo de Datos) Tj
+0 -15 Td
+(  Usuario -> cin -> jugarPartida -> struct Partida) Tj
+0 -15 Td
+(  -> guardarEnDisco -> ofstream -> .txt) Tj
+0 -15 Td
+(  Usuario <- cout <- leerHistorialDisco <- ifstream <- .txt) Tj
+ET
+endstream
+endobj
+
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 10 0 R /Resources << /Font << /F1 26 0 R /F2 27 0 R >> >> >>
+endobj
+
+10 0 obj
+<< /Length 200 >>
+stream
+BT
+/F1 11 Tf
+50 740 Td
+(3.1 Escritura en Disco \(ofstream\)) Tj
+0 -15 Td
+(  void guardarEnDisco\(const Partida& p\) {) Tj
+0 -15 Td
+(      ofstream archivo\("src/historial_partidas.txt", ios::app\);) Tj
+0 -15 Td
+(      archivo << p.idPartida << "," << p.jugador << ",") Tj
+0 -15 Td
+(              << p.eleccionJugador << "," << p.eleccionIA << ",") Tj
+0 -15 Td
+(              << p.resultado << endl;) Tj
+0 -15 Td
+(  }) Tj
+ET
+endstream
+endobj
+
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 12 0 R /Resources << /Font << /F1 26 0 R /F2 27 0 R >> >> >>
+endobj
+
+12 0 obj
+<< /Length 200 >>
+stream
+BT
+/F1 11 Tf
+50 740 Td
+(3.2 Lectura desde Disco \(ifstream\)) Tj
+0 -15 Td
+(  void leerHistorialDisco\(\) {) Tj
+0 -15 Td
+(      ifstream archivo\("src/historial_partidas.txt"\);) Tj
+0 -15 Td
+(      while \(getline\(archivo, idStr, ','\) && ...) {) Tj
+0 -15 Td
+(          // Mostrar cada partida) Tj
+0 -15 Td
+(      }) Tj
+0 -15 Td
+(  }) Tj
+ET
+endstream
+endobj
+
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 14 0 R /Resources << /Font << /F1 26 0 R /F2 27 0 R >> >> >>
+endobj
+
+14 0 obj
+<< /Length 500 >>
+stream
+BT
+/F2 16 Tf
+50 740 Td
+(Conclusión) Tj
+/F1 11 Tf
+0 -25 Td
+(El programa "Piedra, Papel o Tijera" ejemplifica de manera) Tj
+0 -15 Td
+(clara y funcional los conceptos fundamentales de) Tj
+0 -15 Td
+(persistencia de datos en C++. La combinacion de una) Tj
+0 -15 Td
+(estructura de datos \(struct\) con flujos de archivos) Tj
+0 -15 Td
+(\(ofstream\) e \(ifstream\) proporciona un patron de diseno) Tj
+0 -15 Td
+(reusable que puede adaptarse a cualquier proyecto que) Tj
+0 -15 Td
+(requirea almacenamiento de informacion en archivos de texto.) Tj
+0 -25 Td
+(Las decisiones de diseno adoptadas - el uso de ios::app) Tj
+0 -15 Td
+(para preservar datos previos, el formato CSV para facilitar) Tj
+0 -15 Td
+(la lectura, y la modularizacion del codigo en funciones -) Tj
+0 -15 Td
+(constituyen buenas practicas que el estudiante puede) Tj
+0 -15 Td
+(aplicar directamente en su Proyecto Integrador Anual \(P.I.A.\).) Tj
+0 -25 Td
+(Entre las extensiones futuras posibles se encuentran: la) Tj
+0 -15 Td
+(incorporacion de registros de fecha y hora, la) Tj
+0 -15 Td
+(implementacion de estadisticas acumuladas, la migracion) Tj
+0 -15 Td
+(a formatos de datos mas robustos como JSON, y la) Tj
+0 -15 Td
+(adaptacion a interfaces graficas.) Tj
+ET
+endstream
+endobj
+
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 16 0 R /Resources << /Font << /F1 26 0 R /F2 27 0 R >> >> >>
+endobj
+
+16 0 obj
+<< /Length 350 >>
+stream
+BT
+/F2 16 Tf
+50 740 Td
+(Referencias) Tj
+/F1 11 Tf
+0 -25 Td
+(C++ Reference. \(2026\). File streams.) Tj
+0 -15 Td
+(https://en.cppreference.com/w/cpp/io/fstream) Tj
+0 -20 Td
+(GeeksforGeeks. \(2026\). Structs in C++.) Tj
+0 -15 Td
+(https://www.geeksforgeeks.org/structures-in-cpp/) Tj
+0 -20 Td
+(Microsoft Learn. \(2026\). File streams in C++.) Tj
+0 -15 Td
+(https://learn.microsoft.com/cpp/standard-library/file-streams) Tj
+0 -30 Td
+(Documento elaborado bajo normas APA v7) Tj
+0 -15 Td
+(E.E.S.T. N° 1 "Eduardo Ader", 2026) Tj
+ET
+endstream
+endobj
+
+26 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+
+27 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+
+xref
+0 28
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000245 00000 n 
+0000000765 00000 n 
+0000000872 00000 n 
+0000001322 00000 n 
+0000001429 00000 n 
+0000001979 00000 n 
+0000002086 00000 n 
+0000002586 00000 n 
+0000002693 00000 n 
+0000002893 00000 n 
+0000003000 00000 n 
+0000003200 00000 n 
+0000003300 00000 n 
+0000003700 00000 n 
+0000003800 00000 n 
+0000004200 00000 n 
+0000004300 00000 n 
+0000004700 00000 n 
+0000004800 00000 n 
+0000005150 00000 n 
+0000005250 00000 n 
+0000005600 00000 n 
+0000005700 00000 n 
+0000006050 00000 n 
+0000006150 00000 n 
+0000006500 00000 n 
+0000006600 00000 n 
+
+trailer
+<< /Size 28 /Root 1 0 R >>
+startxref
+6670
+%%EOF
